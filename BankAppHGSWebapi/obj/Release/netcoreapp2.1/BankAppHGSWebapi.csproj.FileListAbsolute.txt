@@ -1,0 +1,15 @@
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\bin\Release\netcoreapp2.1\BankAppHGSWebapi.deps.json
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\bin\Release\netcoreapp2.1\BankAppHGSWebapi.runtimeconfig.json
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\bin\Release\netcoreapp2.1\BankAppHGSWebapi.runtimeconfig.dev.json
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\bin\Release\netcoreapp2.1\BankAppHGSWebapi.dll
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\bin\Release\netcoreapp2.1\BankAppHGSWebapi.pdb
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.csprojAssemblyReference.cache
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.csproj.CoreCompileInputs.cache
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.RazorAssemblyInfo.cache
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.RazorAssemblyInfo.cs
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.AssemblyInfoInputs.cache
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.AssemblyInfo.cs
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.RazorTargetAssemblyInfo.cache
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.dll
+C:\Users\Muhammet\source\repos\BankAppHGSWebapi\BankAppHGSWebapi\obj\Release\netcoreapp2.1\BankAppHGSWebapi.pdb
