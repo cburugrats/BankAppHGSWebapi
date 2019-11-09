@@ -13,7 +13,7 @@ namespace BankAppHGSWebapi
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server=tcp:rugratsdb.database.windows.net,1433;Initial Catalog=RugratsHgsDb;Persist Security Info=False;User ID=rugrats;Password=Funu8388;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			optionsBuilder.UseSqlServer(@"Server=tcp:rugrats.database.windows.net,1433;Initial Catalog=rugratshgsdb;Persist Security Info=False;User ID=rugrat;Password=Pas314159;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
