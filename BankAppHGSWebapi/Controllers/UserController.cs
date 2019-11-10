@@ -44,7 +44,7 @@ namespace BankAppHGSWebapi.Controllers
 					HgsNo = 1000;			
 				try
 				{
-					var execSpUers = db.Database.ExecuteSqlCommand("exec [sp_Users] {0},{1}", HgsNo, userModel.balance);
+					var execSpUers = db.Database.ExecuteSqlCommand("exec [sp_HgsUserEkle] {0},{1}", HgsNo, userModel.balance);
 					db.SaveChanges();
 					return HgsNo;
 				}
@@ -74,7 +74,7 @@ namespace BankAppHGSWebapi.Controllers
 				HgsUser tempUser = db.User.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
 				if (tempUser != null)
 				{
-					var execSpParaYatir = db.Database.ExecuteSqlCommand("exec [sp_ParaEkle] {0},{1}", userModel.HgsNo, userModel.balance);
+					var execSpParaYatir = db.Database.ExecuteSqlCommand("exec [sp_HgsParaEkle] {0},{1}", userModel.HgsNo, userModel.balance);
 					try
 					{
 						db.SaveChanges();
