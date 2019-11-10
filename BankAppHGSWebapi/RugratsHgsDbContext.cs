@@ -9,7 +9,7 @@ namespace BankAppHGSWebapi
 {
 	public class RugratsHgsDbContext:DbContext
 	{
-		public DbSet<HgsUser> Users { get; set; }
+		public DbSet<HgsUser> User { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

@@ -33,11 +33,11 @@ namespace BankAppHGSWebapi.Controllers
 			using (var db = new RugratsHgsDbContext())
 			{
 				int HgsNo;
-				var count = (from o in db.Users
+				var count = (from o in db.User
 							 select o).Count();
 				if (count > 0)
 				{
-					var lastRecordHgsNo = db.Users.Max(x => x.HgsNo);
+					var lastRecordHgsNo = db.User.Max(x => x.HgsNo);
 					HgsNo = lastRecordHgsNo + 1;
 				}
 				else
@@ -71,7 +71,7 @@ namespace BankAppHGSWebapi.Controllers
 			}
 			using (var db = new RugratsHgsDbContext())
 			{
-				HgsUser tempUser = db.Users.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
+				HgsUser tempUser = db.User.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
 				if (tempUser != null)
 				{
 					var execSpParaYatir = db.Database.ExecuteSqlCommand("exec [sp_ParaEkle] {0},{1}", userModel.HgsNo, userModel.balance);
@@ -109,7 +109,7 @@ namespace BankAppHGSWebapi.Controllers
 			}
 			using (var db = new RugratsHgsDbContext())
 			{
-				HgsUser tempUser = db.Users.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
+				HgsUser tempUser = db.User.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
 				if (tempUser != null)
 				{
 					var execSpParaCek = db.Database.ExecuteSqlCommand("exec [sp_ParaSil] {0},{1}", userModel.HgsNo, userModel.balance);
@@ -144,7 +144,7 @@ namespace BankAppHGSWebapi.Controllers
 			HgsUser user;
 			using (var db = new RugratsHgsDbContext())
 			{
-				user = db.Users.Where(x => x.HgsNo == HgsNo).FirstOrDefault();
+				user = db.User.Where(x => x.HgsNo == HgsNo).FirstOrDefault();
 				if (user != null)
 				{
 					return user;
