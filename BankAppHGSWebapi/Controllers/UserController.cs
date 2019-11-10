@@ -16,7 +16,7 @@ namespace BankAppHGSWebapi.Controllers
 		#region Register
 		// POST api/user
 		[HttpPost]
-		public int PostRegister([FromBody] HgsUser userModel)
+		public long PostRegister([FromBody] HgsUser userModel)
 		{
 			if (userModel.HgsNo.Equals(null))
 			{
@@ -32,13 +32,14 @@ namespace BankAppHGSWebapi.Controllers
 			}
 			using (var db = new RugratsHgsDbContext())
 			{
-				int HgsNo;
+				long HgsNo;
 				var count = (from o in db.User
 							 select o).Count();
 				if (count > 0)
 				{
 					var lastRecordHgsNo = db.User.Max(x => x.HgsNo);
-					HgsNo = lastRecordHgsNo + 1;
+					lastRecordHgsNo++;
+					HgsNo = lastRecordHgsNo;
 				}
 				else
 					HgsNo = 1000;			
@@ -61,11 +62,11 @@ namespace BankAppHGSWebapi.Controllers
 		[HttpPut("toDepositMoney")]
 		public int PutToDepositMoney([FromBody] HgsUser userModel)
 		{
-			if ((!(userModel.HgsNo > 0))|| userModel.HgsNo>int.MaxValue)
+			if ((!(userModel.HgsNo > 0))|| userModel.HgsNo> long.MaxValue)
 			{
 				return 0;//Geçersiz bir HgsNo girdiniz!
 			}
-			else if ((!(userModel.balance > 0) || userModel.balance>int.MaxValue))
+			else if ((!(userModel.balance > 0) || userModel.balance> long.MaxValue))
 			{
 				return 3;//Geçersiz bir para miktarı girdiniz!
 			}
@@ -94,48 +95,48 @@ namespace BankAppHGSWebapi.Controllers
 
 		#endregion To Deposit Money Hgs
 
-		#region With Draw Money Hgs
-		// PUT api/user/toDepositMoneym
-		[HttpPut("withDrawMoney")]
-		public int PutWithDrawMoney(int id, [FromBody] HgsUser userModel)
-		{
-			if ((!(userModel.HgsNo > 0)) || userModel.HgsNo > int.MaxValue)
-			{
-				return 0;//Geçersiz bir HgsNo girdiniz!
-			}
-			else if ((!(userModel.balance > 0) || userModel.balance > int.MaxValue))
-			{
-				return 3;//Geçersiz bir para miktarı girdiniz!
-			}
-			using (var db = new RugratsHgsDbContext())
-			{
-				HgsUser tempUser = db.User.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
-				if (tempUser != null)
-				{
-					var execSpParaCek = db.Database.ExecuteSqlCommand("exec [sp_ParaSil] {0},{1}", userModel.HgsNo, userModel.balance);
-					try
-					{
-						db.SaveChanges();
-						return 1;//Güncelleme işlemi başarılı!
-					}
-					catch (Exception)
-					{
-						return 4;//Veritabanına kaydedilirken hata oluştu!
-					}
-				}
-				else
-				{
-					return 2;//Bu HgsNo'ye bağlı bir hgs kaydı bulunamadı!
-				}
-			}
-		}
+		//#region With Draw Money Hgs
+		//// PUT api/user/toDepositMoneym
+		//[HttpPut("withDrawMoney")]
+		//public int PutWithDrawMoney(int id, [FromBody] HgsUser userModel)
+		//{
+		//	if ((!(userModel.HgsNo > 0)) || userModel.HgsNo > int.MaxValue)
+		//	{
+		//		return 0;//Geçersiz bir HgsNo girdiniz!
+		//	}
+		//	else if ((!(userModel.balance > 0) || userModel.balance > int.MaxValue))
+		//	{
+		//		return 3;//Geçersiz bir para miktarı girdiniz!
+		//	}
+		//	using (var db = new RugratsHgsDbContext())
+		//	{
+		//		HgsUser tempUser = db.User.Where(x => x.HgsNo == userModel.HgsNo).FirstOrDefault();
+		//		if (tempUser != null)
+		//		{
+		//			var execSpParaCek = db.Database.ExecuteSqlCommand("exec [sp_ParaSil] {0},{1}", userModel.HgsNo, userModel.balance);
+		//			try
+		//			{
+		//				db.SaveChanges();
+		//				return 1;//Güncelleme işlemi başarılı!
+		//			}
+		//			catch (Exception)
+		//			{
+		//				return 4;//Veritabanına kaydedilirken hata oluştu!
+		//			}
+		//		}
+		//		else
+		//		{
+		//			return 2;//Bu HgsNo'ye bağlı bir hgs kaydı bulunamadı!
+		//		}
+		//	}
+		//}
 
-		#endregion With Draw Money
+		//#endregion With Draw Money
 
 		#region Get HgsUser By HgsNo
 		// GET api/getaccountbyid/5
 		[HttpGet("{HgsNo}")]
-		public HgsUser GetById(int HgsNo)
+		public HgsUser GetById(long HgsNo)
 		{
 			if (!(HgsNo > 0))
 			{

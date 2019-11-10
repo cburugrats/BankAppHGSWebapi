@@ -10,7 +10,7 @@ namespace BankAppHGSWebapi.Models
 	{
 		[Key]
 		public int Id { get; set; }
-		public int HgsNo { get; set; }
+		public long HgsNo { get; set; }
 		public decimal balance { get; set; }
 	}
 }
