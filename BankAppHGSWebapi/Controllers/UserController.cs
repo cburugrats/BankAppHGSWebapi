@@ -138,21 +138,29 @@ namespace BankAppHGSWebapi.Controllers
 		[HttpGet("{HgsNo}")]
 		public HgsUser GetById(long HgsNo)
 		{
-			if (!(HgsNo > 0))
+			try
 			{
-				return null;//Geçersiz bir HgsNo girdiniz!
-			}
-			HgsUser user;
-			using (var db = new RugratsHgsDbContext())
-			{
-				user = db.User.Where(x => x.HgsNo == HgsNo).FirstOrDefault();
-				if (user != null)
+				if (!(HgsNo >= 0))
 				{
-					return user;
+					return null;//Geçersiz bir HgsNo girdiniz!
 				}
-				else
-					return null;
+				HgsUser user;
+				using (var db = new RugratsHgsDbContext())
+				{
+					user = db.User.Where(x => x.HgsNo == HgsNo).FirstOrDefault();
+					if (user != null)
+					{
+						return user;
+					}
+					else
+						return null;
+				}
 			}
+			catch (Exception)
+			{
+				return null;
+			}
+			
 		}
 		#endregion Get User By HgsNo
 	}
