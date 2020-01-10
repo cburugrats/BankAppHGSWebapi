@@ -45,7 +45,7 @@ namespace BankAppHGSWebapi.Controllers
 					HgsNo = 1000;			
 				try
 				{
-					var execSpUers = db.Database.ExecuteSqlCommand("exec [sp_HgsUserEkle] {0},{1}", HgsNo, userModel.balance);
+					var execSpUers = db.Database.ExecuteSqlCommand("exec [sp_HgsUserEkle] {0},{1},{2}",userModel.TcNo, HgsNo, userModel.balance);
 					db.SaveChanges();
 					return HgsNo;
 				}
@@ -163,5 +163,31 @@ namespace BankAppHGSWebapi.Controllers
 			
 		}
 		#endregion Get User By HgsNo
+
+		#region Get HgsUser By TcNo
+		// GET api/getaccountbyid/5
+		[HttpGet("getByTc/{TcNo}")]
+		public IEnumerable<HgsUser> GetByTc(long TcNo)
+		{
+			
+				if (!(TcNo >= 0))
+				{
+					return null;//Geçersiz bir HgsNo girdiniz!
+				}
+				//HgsUser user;
+				using (var db = new RugratsHgsDbContext())
+				{
+					var user = db.User.Where(x => x.TcNo == TcNo).ToList();
+					if (user != null)
+					{
+						return user;
+					}
+					else
+						return null;
+				}
+			
+
+		}
+		#endregion Get User By TcNo
 	}
 }
